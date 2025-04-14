@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css">
+    <title>Generador de Contraseñas</title>
+</head>
+<body>
+  <header class="header">
+    <a href="index.html">
+      <img src="./assets/img/cohete.png" alt="goHome"/>
+      <h2>GO HOME</h2>
+  </a>
+  </header>
+  <main class="main">
+    <div class="pass">
+      <div class="title">
+        <h2>Crea tu contraseña segura</h2>
+        <img src="./assets/img/candado.png" alt="link">
+      </div>
+      <div id="passwordForm" class="passwordForm">
+        <label for="length">Numero de caracteres de la Contraseña</label><br>
+        <input type="number" id="length" name="length" min="12" max="50" value="12">
+        <button type="button" onclick="generatePassword()">Generar Contraseña</button>
+        <div id="passwordResult" class="password-result"></div>       
+      </div>
+    </div>
+  </main>
+  <footer class="footer">
+    <nav>
+      <a href="./digital-clock.html"><img src="./assets/img/reloj.png" alt="clock"></a>
+      <a href="./key-generator.html"><img src="./assets/img/candado.png" alt="lock"></a>
+      <a href="./short-list.html"><img src="./assets/img/enlace.png" alt="link"></a>
+      <a href="./weather.html"><img src="./assets/img/nube.png" alt="cloud"></a>
+    </nav>
+  </footer>
+  <script src="./js/script.js"></script>
+  <script src="./js/key-generator.js"></script>
+</body>
+</html>

@@ -1,14 +1,71 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projecto Final Bloque 1</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/styles.css">
+  <title>Dashboard</title>
 </head>
-<body>
- <section></section>
- <section></section>
- <section></section>
- <section></section>
+<body id="index">
+  <main class="main">
+
+    <section class="list-container">
+      <div class="list">
+        <div class="title">
+          <h2>Añade tu enlace de interés</h2>
+          <img src="./assets/img/enlace.png" alt="link">
+        </div>
+        <div class="input-container">
+          <input type="text" id="name-input"  placeholder="Nombre de tu enlace" required>
+          <input type="text" id="url-input" required placeholder="Pega aquí la URL" >
+          <button id="add-link-button" class="add-link-button">Añadir enlace</button>
+        </div>
+        <ul id="links-container" class="links-container"></ul>
+      </div>
+    </section>
+
+    <section class="time-container">
+      <div class="clock-digital">
+        <div id="time" class="time"></div>
+        <div id="date" class="date"></div>
+      </div>
+      <div class="weather">
+        <div id="currentWeather"  class="currentWeather"></div>
+        <ul id="forecastWeather" class="forecastWeather"></ul>
+      </div>
+    </section>
+
+    <section></section>
+
+    <section class="pass-container">
+      <div class="pass">
+        <div class="title">
+          <h2>Crea tu contraseña segura</h2>
+          <img src="./assets/img/candado.png" alt="link">
+        </div>
+        <div id="passwordForm" class="passwordForm">
+          <label for="length">Numero de caracteres de la Contraseña</label><br>
+          <input type="number" id="length" name="length" min="12" max="50" value="12">
+          <button type="button" onclick="generatePassword()">Generar Contraseña</button>
+          <div id="passwordResult" class="password-result"></div>       
+        </div>
+      </div>
+      <footer class="footer">
+        <nav>
+          <a href="./digital-clock.html"><img src="./assets/img/reloj.png" alt="clock"></a>
+          <a href="./key-generator.html"><img src="./assets/img/candado.png" alt="lock"></a>
+          <a href="./short-list.html"><img src="./assets/img/enlace.png" alt="link"></a>
+          <a href="./weather.html"><img src="./assets/img/nube.png" alt="cloud"></a>
+        </nav>
+      </footer>
+    </section>
+
+  </main>
+  <script src="./js/script.js"></script>
+  <script src="./js/link-colect.js"></script>
+  <script src="./js/digital-clock.js"></script>
+  <script src="./js/weather.js"></script>
+  <script src="./js/key-generator.js"></script>
+
 </body>
 </html>
