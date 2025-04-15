@@ -1,4 +1,3 @@
-/* Estilos existentes */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
 html, body, div, span, applet, object, iframe,
@@ -128,7 +127,7 @@ body:not(#index) .footer {
   bottom: 20px;
 }
 
-/* DASHBOARD*/
+/* PAGINA DEF*/
 
 #index .main {
   flex-wrap: wrap;
@@ -236,8 +235,8 @@ input[type="text"], input[type="number"] {
 .password-result span {
   display: block;
   padding: 5px;
-  font-weight: normal;
-  color: #ffe5c1;
+  font-weight: bold;
+  color: orange;
 }
 
 .passwordForm {
@@ -249,7 +248,7 @@ input[type="text"], input[type="number"] {
 
 }
 
-/* WEATHER */
+/* TIEMPO */
 
 .container h2 {
   font-size: 20px;
@@ -300,7 +299,7 @@ input[type="text"], input[type="number"] {
 }
 
 
-/* LIST */
+/* Lista link  */
 
 .input-container {
   display: flex;
@@ -334,15 +333,8 @@ button {
   height: 400px;
   padding: 20px;
   overflow: scroll;
-  scrollbar-width: thin; /* Para la mayoría de los navegadores */
-  scrollbar-color: #555 #333; /* Para navegadores que lo soportan */
-}
-
-/* Estilos específicos para Firefox para mostrar siempre la barra de scroll */
-@-moz-document url-prefix() {
-  .links-container {
-    overflow: auto; /* Cambia a auto para Firefox */
-  }
+  scrollbar-width: thin; 
+  scrollbar-color: #555 #333;
 }
 
 .links-container li {
@@ -376,6 +368,10 @@ button {
   font-size: 10px;
   background-color: #33333393;
 
+}
+
+#supr{
+  font-weight: bold;
 }
 
 .header-add {
@@ -421,8 +417,10 @@ button {
 
 }
 
+/* HOVER ELEMENTS*/
+
 .footer nav a:hover img {
-  filter: invert(0); /* Cambia el color a negro (o el color original) */
+  filter: invert(0);
 }
 
 .header a:hover img{
@@ -436,8 +434,3 @@ button {
   color: #000;
 }
 
-@-moz-document url-prefix() {
-  #index .links-container { /* Añade el ID del contenedor padre si es aplicable */
-    overflow: auto !important; /* Añade !important para forzar la aplicación */
-  }
-}

@@ -1,62 +1,58 @@
-const iconInput = document.getElementById('icon-input');
-const nameInput = document.getElementById('name-input');
-const urlInput = document.getElementById('url-input');
-const addLinkButton = document.getElementById('add-link-button');
-const linksContainer = document.getElementById('links-container');
+const inputIcon = document.getElementById('icon-input');
+const inputName = document.getElementById('name-input');
+const inputUrl = document.getElementById('url-input');
+const btnAddLink = document.getElementById('add-link-button');
+const containerLinks = document.getElementById('links-container');
 
+let storedLinks = JSON.parse(localStorage.getItem('links')) || [];
 
-let savedLinks = JSON.parse(localStorage.getItem('links')) || [];
-
-
-function renderLinks() {
-  linksContainer.innerHTML = ""; 
-
-  savedLinks.forEach(link => {
-    const linkItem = createLinkItem(link.name, link.url);
-    linksContainer.appendChild(linkItem);
+function displayLinks() {
+  containerLinks.innerHTML = "";
+  storedLinks.forEach(({ name, url }) => {
+    containerLinks.appendChild(generateLinkElement(name, url));
   });
 }
 
+function generateLinkElement(name, url) {
+  const listItem = document.createElement('li');
+  const linkAnchor = document.createElement('a');
+  const btnDelete = document.createElement('button');
 
-function createLinkItem(name, url) {
-  const linkItem = document.createElement('li');
-  const linkElement = document.createElement('a');
-  const deleteButton = document.createElement('button');
+  linkAnchor.href = url;
+  linkAnchor.target = "_blank";
+  linkAnchor.textContent = name;
 
-  linkElement.href = url;
-  linkElement.target = "_blank";
-  linkElement.textContent = name;
-
-  deleteButton.textContent = 'X';
-  deleteButton.addEventListener('click', () => {
-    
-    savedLinks = savedLinks.filter(link => link.name !== name || link.url !== url);
-    localStorage.setItem('links', JSON.stringify(savedLinks));
-
-    
-    linksContainer.removeChild(linkItem);
+  btnDelete.textContent = 'X';
+  btnDelete.id = "supr";
+  btnDelete.addEventListener('click', () => {
+    storedLinks = storedLinks.filter(item => item.name !== name || item.url !== url);
+    localStorage.setItem('links', JSON.stringify(storedLinks));
+    containerLinks.removeChild(listItem);
   });
 
-  linkItem.appendChild(linkElement);
-  linkItem.appendChild(deleteButton);
+  listItem.appendChild(linkAnchor);
+  listItem.appendChild(btnDelete);
 
-  return linkItem;
+  return listItem;
 }
 
+btnAddLink.addEventListener('click', function() {
+  const linkName = inputName.value.trim();
+  const linkUrl = inputUrl.value.trim();
 
-addLinkButton.addEventListener('click', function() {
-  const name = nameInput.value;
-  const url = urlInput.value;
-
-  
-  if (name && url) {
-    savedLinks.push({ name, url });
-    localStorage.setItem('links', JSON.stringify(savedLinks));
-    renderLinks(); 
-    nameInput.value = ''; 
-    urlInput.value = '';  
+  if (!linkName && !linkUrl) {
+    alert('Por favor, introduce un nombre y una URL.');
+  } else if (!linkName) {
+    alert('Por favor, introduce un nombre para el enlace.');
+  } else if (!linkUrl) {
+    alert('Por favor, introduce la URL para el enlace.');
+  } else {
+    storedLinks.push({ name: linkName, url: linkUrl });
+    localStorage.setItem('links', JSON.stringify(storedLinks));
+    displayLinks();
+    inputName.value = '';
+    inputUrl.value = '';
   }
 });
 
-
-renderLinks();
+displayLinks();
