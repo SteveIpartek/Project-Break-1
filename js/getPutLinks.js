@@ -4,12 +4,12 @@ const urlInput = document.getElementById('url-input');
 const addLinkButton = document.getElementById('add-link-button');
 const linksContainer = document.getElementById('links-container');
 
-// Obtener enlaces guardados desde localStorage
-const savedLinks = JSON.parse(localStorage.getItem('links')) || [];
 
-// Función para renderizar y añadir enlaces al DOM
+let savedLinks = JSON.parse(localStorage.getItem('links')) || [];
+
+
 function renderLinks() {
-linksContainer.innerHTML = ""; // Limpiar el contenido actual
+  linksContainer.innerHTML = ""; 
 
   savedLinks.forEach(link => {
     const linkItem = createLinkItem(link.name, link.url);
@@ -17,7 +17,7 @@ linksContainer.innerHTML = ""; // Limpiar el contenido actual
   });
 }
 
-// Función para crear un elemento de enlace con botón de eliminar
+
 function createLinkItem(name, url) {
   const linkItem = document.createElement('li');
   const linkElement = document.createElement('a');
@@ -29,11 +29,11 @@ function createLinkItem(name, url) {
 
   deleteButton.textContent = 'X';
   deleteButton.addEventListener('click', () => {
-    // Eliminar el enlace del array y actualizar localStorage
-    const updatedLinks = savedLinks.filter(link => link.name !== name || link.url !== url);
-    localStorage.setItem('links', JSON.stringify(updatedLinks));
+    
+    savedLinks = savedLinks.filter(link => link.name !== name || link.url !== url);
+    localStorage.setItem('links', JSON.stringify(savedLinks));
 
-    // Eliminar el elemento del DOM
+    
     linksContainer.removeChild(linkItem);
   });
 
@@ -43,18 +43,20 @@ function createLinkItem(name, url) {
   return linkItem;
 }
 
-// Evento para añadir un nuevo enlace
+
 addLinkButton.addEventListener('click', function() {
   const name = nameInput.value;
   const url = urlInput.value;
 
-  // Validar que ambos campos no estén vacíos antes de añadir el enlace
+  
   if (name && url) {
     savedLinks.push({ name, url });
     localStorage.setItem('links', JSON.stringify(savedLinks));
-    renderLinks(); // Renderizar nuevamente los enlaces en el DOM
+    renderLinks(); 
+    nameInput.value = ''; 
+    urlInput.value = '';  
   }
 });
 
-// Renderizar los enlaces al cargar la página
+
 renderLinks();

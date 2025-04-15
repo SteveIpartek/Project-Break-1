@@ -1,3 +1,4 @@
+/* Estilos existentes */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
 html, body, div, span, applet, object, iframe,
@@ -9,39 +10,39 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
+article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
-	display: block;
+  display: block;
 }
 body {
-	line-height: 1;
+  line-height: 1;
 }
 ol, ul {
-	list-style: none;
+  list-style: none;
 }
 blockquote, q {
-	quotes: none;
+  quotes: none;
 }
 blockquote:before, blockquote:after,
 q:before, q:after {
-	content: '';
-	content: none;
+  content: '';
+  content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 body {
@@ -133,7 +134,7 @@ body:not(#index) .footer {
   flex-wrap: wrap;
   align-items: start;
   width: 100vw;
-  height: 100vh; 
+  height: 100vh;
 }
 
 #index section {
@@ -195,7 +196,7 @@ button {
   font-family: 'Poppins', sans-serif;
 }
 
-input[type="text"], input[type="number"] {  
+input[type="text"], input[type="number"] {
   padding: 10px;
   border: none;
   border-radius: 5px;
@@ -333,8 +334,17 @@ button {
   height: 400px;
   padding: 20px;
   overflow: scroll;
-  
+  scrollbar-width: thin; /* Para la mayoría de los navegadores */
+  scrollbar-color: #555 #333; /* Para navegadores que lo soportan */
 }
+
+/* Estilos específicos para Firefox para mostrar siempre la barra de scroll */
+@-moz-document url-prefix() {
+  .links-container {
+    overflow: auto; /* Cambia a auto para Firefox */
+  }
+}
+
 .links-container li {
   position: relative;
   display: flex;
@@ -408,22 +418,26 @@ button {
   #index .list {
     margin-top: 0;
   }
-  
+
 }
 
-/* .main {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-} */
+.footer nav a:hover img {
+  filter: invert(0); /* Cambia el color a negro (o el color original) */
+}
 
-/* #index .main {
-  flex-wrap: wrap;
-  align-items: start;
-  width: 100vw;
-  height: 100vh; 
-} */
+.header a:hover img{
+  filter: invert(1);
+}
 
 
+#add-link-button:hover,#passwordForm button:hover{
+  background-color: navy;
+  font-weight: bold;
+  color: #000;
+}
 
+@-moz-document url-prefix() {
+  #index .links-container { /* Añade el ID del contenedor padre si es aplicable */
+    overflow: auto !important; /* Añade !important para forzar la aplicación */
+  }
+}
